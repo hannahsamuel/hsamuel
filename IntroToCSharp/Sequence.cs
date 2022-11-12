@@ -3,11 +3,14 @@
 namespace IntroToCSharp
     { 
 
-    class HelloCSharp
+    class Sequence
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Good Evening!");
+
+            Console.WriteLine(DateTime.Now);
+
+
         }
     }
 
