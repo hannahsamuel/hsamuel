@@ -1,6 +1,6 @@
 ﻿
-
-<div class="text-center">
+ 
+<div>
 	<h2>Telerik UI DatePicker for ASP.NET Core</h2>
 </div>
  
@@ -8,14 +8,11 @@
             .Name("my-picker")
         )
 
-     <div class="text-center">
+     <div >
         <h2>Telerik UI Spreadsheet for ASP.NET Core</h2>
     </div>
     
-    <br />
-        <div id="Spreadsheet">
-    <script src="~/shared/jszip.min.js"></script>
-
+  
 
     @(Html.Kendo().Spreadsheet()
         .Name("spreadsheet")
@@ -26,11 +23,13 @@
         .Pdf(pdf => pdf
             .ProxyURL(Url.Action("Index_Save", "Spreadsheet"))
         )
+        
         .Sheets(sheets =>
         {
             sheets.Add()
                 .Name("Food Order")
                 .MergedCells("A1:G1", "C15:E15")
+
                 .Columns(columns =>
                 {
                     columns.Add().Width(100);
@@ -592,4 +591,128 @@
                 });
         })
         )
+
+    <script>
+    </script>
+
+                <h2>Telerik UI Chart for ASP.NET Core</h2>
+             
+</div>
+<div>
+    @(Html.Kendo().Chart()
+        .Name("chart")
+        .Title(title => title
+        .Text("Invoice #52 - 06/23/2015")
+        .Position(ChartTitlePosition.Bottom))
+        .Legend(legend => legend
+        .Visible(false)
+        )
+        .ChartArea(chart => chart
+        .Background("transparent")
+        )
+        .HtmlAttributes(new { style = "background: center no-repeat url(" + @Url.Content("~/shared/styles/world-map.png") })
+        .Series(series =>
+        {
+            series.Pie(new dynamic[] {
+    new {category="Calzone",value=Math.Round(((14.87/220.82)*100),2),color="#9de219"},
+    new {category="Margarita",value=Math.Round(((21.10/220.82)*100),2),color="#90cc38"},
+    new {category="Pollo Formaggio",value=Math.Round(((16.79/220.82)*100),2),color="#068c35"},
+    new {category="Greek Salad",value=Math.Round(((11.39/220.82)*100),2),color="#006634"},
+    new {category="Spinach and Blue Cheeset",value=Math.Round(((41.36/220.82)*100),2),color="#004d38"},
+    new {category="Rigoletto",value=Math.Round(((13.19/220.82)*100),2),color="#033939"},
+    new {category="Creme Brulee",value=Math.Round(((41.94/220.82)*100),2),color="#9de219"},
+    new {category="Radeberger Beer",value=Math.Round(((23.95/220.82)*100),2),color="#90cc38"},
+    new {category="Budweiser Beer",value=Math.Round(((16.16/220.82)*100),2),color="#068c35"},
+    new {category="Tip",value=Math.Round(((20.07/220.82)*100),2),color="#006634"},
+
+        })
+            .Labels(labels => labels
+            .Template("#= category #: \n #= value#%")
+            .Background("transparent")
+            .Visible(true)
+            )
+            .StartAngle(150);
+        })
+        .Tooltip(tooltip => tooltip
+        .Visible(true)
+        .Format("{0}%")
+        )
+        )
+</div>
+<div>
+    @(
+        Html.Kendo().Chart()
+                .Name("barchart")
+                .Title("Invoice #52 - 06/23/2015")
+                .ChartArea(chartArea => chartArea
+                .Background("transparent")
+                )
+                .Series(series =>
+                {
+                    series.Bar(new double[] { Math.Round(((14.87 / 220.82) * 100), 2), Math.Round(((21.10 / 220.82) * 100), 2),
+            Math.Round(((16.79 / 220.82) * 100), 2), Math.Round(((11.39 / 220.82) * 100), 2), Math.Round(((41.36 / 220.82) * 100), 2),
+            Math.Round(((13.19 / 220.82) * 100), 2), Math.Round(((41.94 / 220.82) * 100), 2), Math.Round(((23.95 / 220.82) * 100), 2), Math.Round(((16.16 / 220.82) * 100), 2), Math.Round(((20.07 / 220.82) * 100), 2) });
+
+            })
+
+
+
+    .CategoryAxis(axis => axis
+    .Categories("Calzone", "Margarita", "Pollo Formaggio", "Greek Salad", "Spinach and Blue Cheese", "Rigoletto", "Creme Brulee", "Raedegerger Beer", "Budweiser Beer")
+    .MajorGridLines(lines => lines.Visible(false))
+        )
+         .ValueAxis(axis => axis
+            .Numeric()
+            .Max(40)
+            .Line(line => line.Visible(false))
+            .MajorGridLines(lines => lines.Visible(true))
+        )
+
+        .Tooltip(tooltip => tooltip
+            .Visible(true)
+            .Template("#= series.name #: #= value #")
+        )
+    
+
+)
+</div>
+ <div>
+    @(Html.Kendo().Chart()
+        .Name("overlappingchart")
+        .Title("Invoice #52 - 06/23/2015")
+        .Legend(legend => legend
+            .Position(ChartLegendPosition.Bottom)
+        )
+        .SeriesDefaults(seriesDefaults =>
+            seriesDefaults.Bar().Stack(true)
+        )
+        .Series(series => {
+            series.Bar(new double[] {Math.Round(((14.87 / 220.82) * 100),2) }).Color("#f3ac32");
+            series.Bar(new double[] {Math.Round(((21.10 / 220.82) * 100), 2) }).Color("#f3ac82");
+            series.Bar(new double[] {Math.Round(((16.79 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] {Math.Round(((11.39 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((41.36 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((13.19 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((41.94 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((23.95 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((16.16 / 220.82) * 100), 2) }).Color("#f3ac32");
+            series.Bar(new double[] { Math.Round(((20.07 / 220.82) * 100), 2) }).Color("#f3ac32");
+
+        })
+        .CategoryAxis(axis => axis
+            .Categories("Cost")
+            .MajorGridLines(lines => lines.Visible(false))
+        )
+        .ValueAxis(axis => axis
+            .Numeric()
+            .Labels(labels => labels.Format("{0}%"))
+            .Max(100)
+            .Line(line => line.Visible(false))
+            .MajorGridLines(lines => lines.Visible(true))
+        )
+        .Tooltip(tooltip => tooltip
+            .Visible(true)
+            .Template("#= series.name #: #= value #")
+        )
+    ) 
 </div>
